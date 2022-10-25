@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const timeAgo = require('node-time-ago');
 const postBank = require("./postBank");
 const app = express();
 
@@ -59,7 +60,7 @@ const html = `<!DOCTYPE html>
       <span>${post.content}</span>
       <div>
       <small class="news-info">
-        ${post.upvotes} upvotes | ${post.date}
+        ${post.upvotes} upvotes | ${timeAgo(new Date().toISOString())}>
       </small>
       </div>
     </div>
