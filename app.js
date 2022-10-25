@@ -19,10 +19,11 @@ app.get("/", (req, res) => {
     <div class="news-list">
       <header><img src="/logo.png"/>Wizard News</header>
       ${posts.map(post => `
+      
         <div class='news-item'>
           <p>
-            <span class="news-position">${post.id}. ▲</span>${post.title}
-            <small>(by ${post.name})</small>
+          
+            <span class="news-position">${post.id}. ▲</span><a href="/posts/${post.id}">${post.title}</a>
           </p>
           <small class="news-info">
             ${post.upvotes} upvotes | ${post.date}
@@ -47,12 +48,24 @@ const html = `<!DOCTYPE html>
 <body>
   <div class="news-list">
     <header><img src="/logo.png"/>Wizard News</header>
-    
+    <div class='news-item'>
+      <p>
+        <span class="news-position">${post.id}. ▲</span>${post.title}
+        <small>(by ${post.name})</small>
+      </p>
+      <span>${post.content}</span>
+      <div>
+      <small class="news-info">
+        ${post.upvotes} upvotes | ${post.date}
+      </small>
+      </div>
+    </div>
     </div>
   </body>
 </html>`
 
-res.send(html);});
+res.send(html);
+});
 
 
 
